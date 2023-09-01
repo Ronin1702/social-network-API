@@ -96,7 +96,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 ### API Routes
 
 >Use below _**end points**_ for API requests when the server has started.
->>For example, in the API tool such as [Insomnia](https://insomnia.rest/), go to <https://localhost:3000/api/users> for user API requests.
+>>For example, in the API tool such as [Insomnia](https://insomnia.rest/), go to <http://localhost:3000/api/users> for user API requests.
 
 **`/api/users`**
 
