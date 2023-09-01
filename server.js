@@ -11,6 +11,6 @@ app.use(express.json());
 
 db.once('open', () => {
     app.listen(PORT, () => {
-        console.log("Socil Network API server is running on " + `http://localhost:${PORT}` + " 🚀!");
+        console.log("Social Network API server is running on " + `http://localhost:${PORT}` + " 🚀!");
     });
 });
