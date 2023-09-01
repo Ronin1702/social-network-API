@@ -2,7 +2,7 @@
 
 * Create [User.js](#user), [Thought.js](#thought), and [Reaction.js](#reaction-schema-only) in the `models` directory and refer to the guideline below for "Schema Settings".
 
-## **User**
+## [**User**](./models/User.js)
 
 * `username`
   * String
