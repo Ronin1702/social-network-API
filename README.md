@@ -30,6 +30,7 @@ SO THAT my website can handle large amounts of unstructured data
 - [![npm](https://img.shields.io/badge/npm-v9.8.1-blue?logo=npm)](https://docs.npmjs.com/cli/v9/)
   - [![Express Package](https://img.shields.io/badge/Express-4.18.2-green?logo=express)](https://www.npmjs.com/package/express)
   - [![Mongoose Package](https://img.shields.io/badge/Mongoose-7.5.0-green?logo=mongoose)](https://mongoosejs.com)
+  - [![Validator Package](https://img.shields.io/badge/Validator-13.11.0-green?logo=npm)](https://www.npmjs.com/package/validator)
 
 [_back to top_](#table-of-contents)
 
@@ -46,7 +47,7 @@ SO THAT my website can handle large amounts of unstructured data
 >then
 >
 > ```bash
-> npm i express@4.18.2 mongoose@7.5.0
+> npm i express@4.18.2 mongoose@7.5.0 validator@13.11.0
 > ```
 >
 > **Important**: Please @ the **EXACT** versions as shown above to ensure the functionality of this application.
