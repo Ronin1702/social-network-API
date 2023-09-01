@@ -3,6 +3,19 @@ const { User, Thought } = require('../models');
 // Centralized error handling
 const handleError = (err, res) => {
     console.log(err);
+    if (err.name === 'ValidationError') {
+        const messages = {};
+        for (const field in err.errors) {
+            if (err.errors[field].kind === 'minlength') {
+                messages[field] = `${field} should be at least ${err.errors[field].properties.minlength} characters long.`;
+            } else if (err.errors[field].kind === 'maxlength') {
+                messages[field] = `${field} should be at most ${err.errors[field].properties.maxlength} characters long.`;
+            } else {
+                messages[field] = err.errors[field].message;
+            }
+        }
+        return res.status(400).json({ errors: messages });
+    }
     res.status(500).json(err);
 };
 
@@ -39,7 +52,7 @@ const userCRUDs = {
     async createUser(req, res) {
         try {
             const newUser = await User.create(req.body);
-            res.json(newUser);
+            res.status(201).json(newUser);
         } catch (err) {
             handleError(err, res);
         }
@@ -67,14 +80,18 @@ const userCRUDs = {
     // Delete user and associated thoughts
     async deleteUser(req, res) {
         try {
-            const deletedUser = await User.findByIdAndDelete(req.params.userId);
+            const user = await User.findByIdAndDelete(req.params.userId);
 
-            if (!deletedUser) {
+            if (!user) {
                 return res.status(404).json({ message: 'No user found with this id!' });
             }
 
-            await Thought.deleteMany({ _id: { $in: deletedUser.thoughts } });
-            res.json({ message: 'User and associated thoughts deleted!' });
+            // await Thought.deleteMany({ _id: { $in: user.thoughts } });
+            await User.updateMany(
+                { friends: { $in: [user._id] } },
+                { $pull: { friends: user._id } }
+            );
+            res.json({ message: 'Associated thoughts and friendship of the user successfully deleted!' });
         } catch (err) {
             handleError(err, res);
         }
