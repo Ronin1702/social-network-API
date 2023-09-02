@@ -53,7 +53,7 @@ SO THAT my website can handle large amounts of unstructured data
 >
 > **Important**: Please @ the **EXACT** versions as shown above to ensure the functionality of this application.
 
-- **If you wish to use database from your cluster on `cloud.MongoDB.com`, make sure to create a _`.env`_ file in the root directory and define the `connection string` as the example shown below:**
+- **If you wish to access your databases in your `cluster` on `MongoDB Atlas`, make sure to create a _`.env`_ file in the root directory and define the [connection string in URI format](https://www.mongodb.com/docs/manual/reference/connection-string/?utm_source=compass&utm_medium=product#std-label-connections-dns-seedlist) as the `SRV` example shown below:**
 
 ```js
 MONGODB_URI=mongodb+srv://username:password@clustername.mongodb.net/Social-Network-API
