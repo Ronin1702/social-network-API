@@ -58,8 +58,16 @@ const userSchema = new Schema(
         },
         // Remove _id
         id: false,
+        timestamps: true,
     }
 );
+
+//pre-save hook for updateAt
+userSchema.pre('save', function (next) {
+    // update the updatedAt field before every save to the database
+    this.updatedAt = Date.now();
+    next();
+});
 
 // Virtual property to get the total count of friends
 userSchema.virtual('friendCount').get(function () {

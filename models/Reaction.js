@@ -8,7 +8,7 @@ const reactionSchema = new Schema(
         // Unique identifier for each reaction
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: new Types.ObjectId()
+            default: () => new Types.ObjectId()
         },
         // Text body of the reaction, must not exceed 280 characters
         reactionBody: {
