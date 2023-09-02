@@ -25,7 +25,7 @@ const formatTime = (dateObj) => {
     const minutes = (dateObj.getMinutes() < 10 ? '0' : '') + dateObj.getMinutes();
 
     // Determine AM or PM
-    const periodOfDay = dateObj.getHours() >= 12 ? 'pm' : 'am';
+    const periodOfDay = dateObj.getHours() >= 12 ? 'PM' : 'AM';
 
     return `${hour}:${minutes} ${periodOfDay}`;
 };
