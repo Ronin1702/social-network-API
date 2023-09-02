@@ -5,7 +5,7 @@ An API for a social network web application where users can share their thoughts
 ## Table of Contents
 
 - [Description](#description)
-- [Technology](#technology)
+- [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
   - [API Routes](#api-routes)
@@ -23,12 +23,13 @@ SO THAT my website can handle large amounts of unstructured data
 
 [_back to top_](#table-of-contents)
 
-## Technology
+## Tech Stack
 
 - [![Node.js](https://img.shields.io/badge/Node.js®-v20.5.1-blue?logo=node.js)](https://nodejs.org/en)
 
 - [![npm](https://img.shields.io/badge/npm-v9.8.1-blue?logo=npm)](https://docs.npmjs.com/cli/v9/)
   - [![Express Package](https://img.shields.io/badge/Express-4.18.2-green?logo=express)](https://www.npmjs.com/package/express)
+  - [![DotEnv Package](https://img.shields.io/badge/DotEnv-16.3.1-green?logo=dotenv)](https://www.npmjs.com/package/dotenv)
   - [![Mongoose Package](https://img.shields.io/badge/Mongoose-7.5.0-green?logo=mongoose)](https://mongoosejs.com)
   - [![Validator Package](https://img.shields.io/badge/Validator-13.11.0-green?logo=npm)](https://www.npmjs.com/package/validator)
 
@@ -47,22 +48,22 @@ SO THAT my website can handle large amounts of unstructured data
 >then
 >
 > ```bash
-> npm i express@4.18.2 mongoose@7.5.0 validator@13.11.0
+> npm i dotenv@16.3.1 express@4.18.2 mongoose@7.5.0 validator@13.11.0
 > ```
 >
 > **Important**: Please @ the **EXACT** versions as shown above to ensure the functionality of this application.
 
-- **If you would like to `use` your databases from `cloud.MongoDB.com`, make sure to create a _`.env`_ file in the root directory and define the `connection string` as the example shown below:**
+- **If you wish to use database from your cluster on `cloud.MongoDB.com`, make sure to create a _`.env`_ file in the root directory and define the `connection string` as the example shown below:**
 
 ```js
-MONGODB_URI=mongodb+srv://username:password@clustername.mongodb.net/
+MONGODB_URI=mongodb+srv://username:password@clustername.mongodb.net/Social-Network-API
 ```
 
-- Seed the database with `node`:
+<!-- - Seed the database with `node`:
 
 ```bash
 node run seed
-```
+``` -->
 
 [_back to top_](#table-of-contents)
 
@@ -74,9 +75,9 @@ node run seed
 npm start
 ```
 
-- Workflow:
+- CRUD Workflow:
 
->To execute the workflow for `GET`, `POST`, `PUT`, and `DELETE` API requests,  please consult the [API Routes](#api-routes).
+>To execute the CRUD workflow for `GET`, `POST`, `PUT`, and `DELETE` API requests,  please consult the [API Routes](#api-routes).
 
 ```js
 GIVEN a social network API
@@ -96,8 +97,8 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ### API Routes
 
->Use below _**end points**_ for API requests when the server has started.
->>For example, in the API tool such as [Insomnia](https://insomnia.rest/), go to <http://localhost:3000/api/users> for user API requests.
+>Use below param _**end points**_ for API requests when the server has started.
+>>For example, in the API tool e.g. [Insomnia](https://insomnia.rest/), make a new `HTTP Request` <http://localhost:3000/api/users> to execute user API CRUD operations.
 
 **`/api/users`**
 
