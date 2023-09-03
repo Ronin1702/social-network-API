@@ -100,64 +100,122 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 >Use below param _**end points**_ for API requests when the server has started.
 >>For example, in the API tool e.g. [Insomnia](https://insomnia.rest/), make a new `HTTP Request` <http://localhost:3000/api/users> to execute user API CRUD operations.
 
-**`/api/users`**
+***`/api/users`***
 
 - `GET` all users
 
+- `POST` a new user: mongoDB will automatically create an `_id` for the new user
+
+  ```json
+  // Example JSON body to POST
+  {
+    "username": "ronin",
+    "email": "ronin@github.com"
+  }
+  ```
+
+---
+***`/api/users/:userId`***
+
 - `GET` a single user by its `_id` and populated thought and friend data
 
-- `POST` a new user:
-
-```json
-// example data
-{
-  "username": "lernantino",
-  "email": "lernantino@gmail.com"
-}
-```
-
 - `PUT` to update a user by its `_id`
+  
+    ```URL
+    http://localhost:3000/api/users/5edff358a0fcb779aa7b118b
+    ```
+
+- You can also change `username` and/or `email`, add/remove `friends` by their `_id`s with `JSON` method as follows:
+
+  ```json
+  {
+    //change ronin's username to ronin1702
+    "username": "ronin1702",
+    
+    //change ronin's email to ronin1702@github.com
+    "email": "ronin1702@github.com",
+
+    "friends": [
+      //adding two friends with their _id
+      "64f3c522f4bb44d360d9dd98",
+      "64f3bf3bf4bb44d360d9dd8f"
+    ]
+  }
+  ```
+
+  ```json
+  {
+    //removing all friends by leaving the array empty, without changing anything else
+    "friends": []  
+  }
+  ```
 
 - `DELETE` to remove user by its `_id`
 
->**Note**: Associated thoughts are deleted when the user is the deleted.
+>**Note**: Associated thoughts and reactions are deleted when the user is the deleted.
 
 ---
+***`/api/users/:userId/friends/:friendId`***
 
-**`/api/users/:userId/friends/:friendId`**
+- `GET` to retrieve a list of all friends for a single user by `_id`
 
 - `POST` to add a new friend to a user's friend list
+  - `URL` method: adding `userId`: `64f3c522f4bb44d360d9dd98` as a friend to `userId`: `5edff358a0fcb779aa7b118b`
+
+    ```url
+    http://localhost:3000/api/users/5edff358a0fcb779aa7b118b/friends/64f3c522f4bb44d360d9dd98
+    ```
+
+  - `JSON` method
+
+    ```URL
+    http://localhost:3000/api/users/5edff358a0fcb779aa7b118b/
+    ```
+
+    and pass the `friends`' `_id`s in the `JSON body` of the `POST` request as follows:
+
+    ```json
+    // Example JSON body to POST
+    {
+      "friends": [
+        "64f3c522f4bb44d360d9dd98"
+      ]
+    }
+    ```
 
 - `DELETE` to remove a friend from a user's friend list
 
 ---
-
-**`/api/thoughts`**
+***`/api/thoughts`***
 
 - `GET` to get all thoughts
-
-- `GET` to get a single thought by its `_id`
-
 - `POST` to create a new thought (don't forget to push the created thought's `_id` to the associated user's `thoughts` array field)
 
-```json
-// example data
-{
-  "thoughtText": "Here's a cool thought...",
-  "username": "lernantino",
-  "userId": "5edff358a0fcb779aa7b118b"
-}
-```
+  ```json
+  // Example JSON body to POST
+  {
+    "thoughtText": "Here's a cool thought...",
+    "username": "ronin1702",
+    "userId": "5edff358a0fcb779aa7b118b"
+  }
+  ```
+
+---
+***`/api/thoughts/:thoughtId`***
+
+- `GET` to get a single thought by its `_id`
 
 - `PUT` to update a thought by its `_id`
 
 - `DELETE` to remove a thought by its `_id`
 
 ---
-
- **`/api/thoughts/:thoughtId/reactions`**
+***`/api/thoughts/:thoughtId/reactions`***
 
 - `POST` to create a reaction stored in a single thought's `reactions` array field
+
+---
+***`/api/thoughts/:thoughtId/reactions/:reactionId`***
 
 - `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
 
@@ -186,5 +244,4 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 [_back to top_](#table-of-contents)
 
 ---
-
 [![Copyright](https://img.shields.io/static/v1.svg?label=Social%20Network%20API%20©️%20&message=%202023%20Kai%20Chen&labelColor=informational&color=033450)](https://kaichen.biz)

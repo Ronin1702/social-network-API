@@ -13,13 +13,13 @@ const reactionSchema = new Schema(
         // Text body of the reaction, must not exceed 280 characters
         reactionBody: {
             type: String,
-            required: 'Reaction text is required!',
+            required: [true, 'Write something to reactionBody!'],
             maxlength: [280, 'Reaction must not exceed 280 characters!']
         },
         // Username of the user who created this reaction
         username: {
             type: String,
-            required: 'Username is required!'
+            required: [true, 'Username  is required!']
         },
         // Timestamp indicating when the reaction was created
         createdAt: {
