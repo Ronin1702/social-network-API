@@ -223,7 +223,9 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ## Walkthrough Video
 
-<!-- [![GIF Name](local GIF location)](Video Link) -->
+> - **👇🏼 Click Image Below for Walkthrough Video Online.**
+
+[![Screenshot](./images/MongoDB-Insomnia-API.png)](https://github.com/Ronin1702/social-network-API/assets/131393836/ccc01b8c-7b65-4c27-81f2-a0f63b819e04)
 
 [_back to top_](#table-of-contents)
 
