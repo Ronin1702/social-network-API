@@ -225,7 +225,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 > - **👇🏼 Click Image Below for Walkthrough Video Online.**
 
-[![Screenshot](./images/MongoDB-Insomnia-API.png)](https://github.com/Ronin1702/social-network-API/assets/131393836/ccc01b8c-7b65-4c27-81f2-a0f63b819e04)
+[![Screenshot](./images/MongoDB-Insomnia-API.png)](https://drive.google.com/file/d/1zFHdMDN3KUDuk0Qvw7w41WWN5YbtKvFP/view)
 
 [_back to top_](#table-of-contents)
 
